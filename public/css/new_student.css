@@ -1,0 +1,17 @@
+input[type="file"] {
+    display: none;
+}
+
+#new_custom_image {
+    width: 15vh;
+    height: 15vh;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#new_custom_image:hover {
+    transform: scale(1.1, 1.1);
+}
+
+
+

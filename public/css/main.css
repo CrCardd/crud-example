@@ -1,0 +1,8 @@
+header {
+    background-color: var(--pallete_2);
+    color: var(--pallete_5);
+}
+
+main {
+    height: 90vh;
+}
