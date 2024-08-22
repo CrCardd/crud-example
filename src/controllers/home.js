@@ -9,7 +9,7 @@ module.exports = {
         });
         const alunos = await aluno.findAll({
             raw: true,
-            attributes: ['Nome', 'Idade', 'Sexo', 'Foto']
+            attributes: ['IDAluno', 'Nome', 'Idade', 'Sexo', 'Foto']
         });
         res.render('../views/index', { salas, alunos, id: '0' });
     },

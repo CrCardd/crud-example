@@ -29,6 +29,10 @@
         </header>
 
         <main style="background-color: var(--pallete_6);">
+
+
+
+
             <!-- SELECINAR SALA -->
            <div class="row col-md-12       w-100 d-flex justify-content-end align-items-flex-start p-5">
                 <form action="" method="post">
@@ -61,10 +65,13 @@
                                 <img class="card-image" src="img/<%= alunos[i].Foto %>" alt="..." style="width: 25svh; height: 25svh">
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn" data-target="#edit_student"> EDITAR </button>
+                                
+                                <form action="/editarAluno/<%= alunos[i].IDAluno %>" method="get">
+                                    <button type="submit" class="btn" data-target="#edit_student"> EDITAR </button>
+                                </form>
+
                                 <small class="text-muted">
                                     <%= alunos[i].Idade %> anos 
-                                    <br> 
                                 </small>
                             </div>
                         </div>
@@ -99,7 +106,7 @@
                             <form id="student_register" action="/cadastroAluno" method="post" enctype="multipart/form-data">
 
                                 <div class="p-5 d-flex justify-content-center">
-                                    <img src="img/default_user_image.png" alt="" id="new_custom_image">
+                                    <img src="img/default.png" alt="" id="new_custom_image">
                                     <input type="file" id="input_image_archive" accept="image/" name="foto">
                                 </div>
                                 
@@ -188,72 +195,7 @@
         
 
             <!-- MODAL EDITAR ALUNOS -->
-            <div class="modal fade" id="edit_student" tabindex="-1" role="dialog" aria-labelledby="register_student" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Editar aluno</h5>
-
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-
-                        </div>
-                        <div class="modal-body">
-                            
-                            
-                            <form action="/editarAluno/<%= alunos_edit.IDAluno %>" method="post" enctype="multipart/form-data">
-
-                                <div class="p-5 d-flex justify-content-center">
-                                    <img src="img/<%= alunos_edit.Foto %>" alt="" id="edit_custom_image">
-                                    <input type="file" id="edit_input_image_archive" accept="image/" name="edit_foto">
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="nome" name="edit_nome" id="edit_nome" value="<%= alunos_edit.Nome%>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mt-3">
-                                    <label for="exampleFormControlInput1">Idade</label>
-                                    <input type="number" class="form-control" id="edit_idade" name="edit_idade" value="<%= alunos_edit.Idade %>">
-                                </div>
-
-
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="edit_sexo" id="edit_student_masc" value="masc" <%=alunos_edit.Sexo == 'masc' ? checked : ''%>>
-                                    <label class="form-check-label" for="edit_student_masc">Masculino</label>
-                                </div>
-
-
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sexo" id="edit_student_fem" value="fem" <%=alunos_edit.Sexo == 'fem' ? checked : ''%>>
-                                    <label class="form-check-label" for="edit_student_fem" name="edit_sexo">Feminino</label>
-                                </div>
-
-
-                                <select class="form-control mt-3" name="edit_sala">
-                                    <option value="0">Selecione</option>
-                                    <% for (let i=0; i<salas.length; i++) { %>
-                                        <option value='<%= salas[i].IDSala%>' <% salas[i].IDSala == alunos_edit.IDSala ? 'selected' : '' %>> <%= salas[i].Nome %> </option>
-                                    <% } %>
-                                </select>
-
-
-                            </form>
-
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Fechar</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="button_student_edit">Salvar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
+            
         
         
     </main>
