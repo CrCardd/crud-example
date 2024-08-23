@@ -35,14 +35,24 @@
 
             <!-- SELECINAR SALA -->
            <div class="row col-md-12       w-100 d-flex justify-content-end align-items-flex-start p-5">
-                <form action="" method="post">
-                    <select class="" onchange="this.form.submit()" name="mostrar_salas">
-                        <option value="0">Select:</option>
-                        <% for (let i=0; i<salas.length; i++) { %>
-                            <option value='<%= salas[i].IDSala %>'<%= id == salas[i].IDSala ? 'selected' : ''%>> <%= salas[i].Nome %> </option>
-                        <% } %>
-                    </select>
-                </form>
+                <nav>
+                    <div <%= id == 0 ? 'hidden' : '' %>>
+                        <form action="/editarSala/<%= id %>" method="get">
+                            <button type="submit" class="btn"> EDITAR SALA </button>
+                        </form>
+                        <h1> <%= qtd_by_id %> / <%= id==0 ? '' : salas[id-1].Capacidade %></h1>
+                    </div>
+
+
+                    <form action="" method="post">
+                        <select class="" onchange="this.form.submit()" name="mostrar_salas">
+                            <option value="0">Select:</option>
+                            <% for (let i=0; i<salas.length; i++) { %>
+                                <option value='<%= salas[i].IDSala %>'<%= id == salas[i].IDSala ? 'selected' : ''%>> <%= salas[i].Nome %> </option>
+                            <% } %>
+                        </select>
+                    </form>
+                </nav>
             </div>
 
             
@@ -137,8 +147,8 @@
 
                                 <select class="form-control mt-3" name="sala">
                                     <option value="1">Selecione</option>
-                                    <% for (let i=0; i<salas.length; i++) { %>
-                                        <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                                    <% for (let i=0; i<salas_choose.length; i++) { %>
+                                        <option value='<%= salas_choose[i].IDSala %>'> <%= salas_choose[i].IDSala %> | <%= salas_choose[i].Nome %> </option>
                                     <% } %>
                                 </select>
 
@@ -191,24 +201,10 @@
                 </div>
             </div>
         
-        
-        
-
-            <!-- MODAL EDITAR ALUNOS -->
             
         
         
     </main>
-    
-    <!-- <footer class="fixed-bottom">
-            <div class="d-flex align-items-center p-4 bg-dark">
-                <h5 class="my-0 mr-md-auto font-weight-normal text-light">Bosch
-                    <span style="color:#ffffff; font-weight: 900;">Engineering</span>
-                    Technical School | 
-                </h5>
-            </nav>
-        </div>
-    </footer> -->
     
     
     

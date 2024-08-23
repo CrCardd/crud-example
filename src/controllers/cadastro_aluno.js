@@ -4,10 +4,10 @@ const sala = require('../model/sala');
 
 
 module.exports = {
-    async aluno(req, res){
+    async aluno(req, res) {
         res.render('../views/index');
     },
-    async alunoInsert(req, res){
+    async alunoInsert(req, res) {
         // Recebendo as informações pelo Body
         const dados = req.body;
         // Nome padrão da foto
@@ -19,11 +19,11 @@ module.exports = {
         }
         // Criando aluno no banco de dados
         await aluno.create({
-        Nome: dados.nome,
-        Idade: dados.idade,
-        Sexo: dados.sexo,
-        IDSala: dados.sala,
-        Foto: foto
+            Nome: dados.nome,
+            Idade: dados.idade,
+            Sexo: dados.sexo,
+            IDSala: dados.sala,
+            Foto: foto
         });
         // Redirecionar para a página principal
         res.redirect('/');

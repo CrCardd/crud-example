@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Desafio</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow justify-content-space-between">
+    <div>
+      <a href="/"><h4 class="navbar-brand">Bosch <Strong class="gradient" >Engineering</Strong> Technical School | Controle de alunos</h4></a>
+    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav" >
+        </div>
+    </div>
+    </nav>
+
+
+
+          <div class="container d-flex justify-content-center align-items-center mt-5 w-100">
+            <div class="row border border-dark rounded m-5 w-50">
+                <form class="w-100 m-3" action="/editarSala/<%= salas.IDSala %>" method="post">
+                    <div class="form-group col-md-4-shadow  w-100" >
+                      <label for="formGroupExampleInput" class="mb-2">Nome da Sala</label>
+                      <input type="text" class="form-control w-100" value="<%= salas.Nome %>" id="formGroupExampleInput" name="sala" placeholder="Insira o nome da sala aqui">
+                    </div>
+                    <div class="form-group w-100">
+                      <label for="formGroupExampleInput2"  class="mb-2">Capacidade</label>
+                      <input type="number" value="<%= salas.Capacidade %>" class="form-control w-100" id="formGroupExampleInput2" name="capacidade" placeholder="Insira a capacidade da sala">
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Atualizar"/>
+                  </form>
+    
+            </div>
+        </div>
+
+
+    <footer class="d-flex align-items-center fixed-bottom text-light bg-dark shadow">
+        <h5 class="m-3">Bosch <strong class="gradient" >Engineering</strong> Technical School</h5>
+    </footer>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

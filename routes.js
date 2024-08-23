@@ -15,9 +15,16 @@ route.get('/', cadastro.sala);
 route.post('/cadastroSala', cadastro.salaInsert);
 
 route.get('/', cadastro_aluno.aluno);
+route.post('/cadastroAluno', multer(config).single('foto'), cadastro_aluno.alunoInsert);
+
+
 
 route.get('/editarAluno/:id', editar.alunos);
+route.post('/editarAluno/:id', multer(config).single('foto'), editar.atualizar_aluno);
 
-route.post('/cadastroAluno', multer(config).single('foto'), cadastro_aluno.alunoInsert);
+route.get('/editarSala/:id', editar.salas);
+route.post('/editarSala/:id', editar.atualizar_sala);
+
+
 
 module.exports = route;
