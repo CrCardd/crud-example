@@ -36,3 +36,13 @@ button_save_student.addEventListener('click', () => {
 )
 
 
+
+function validate(form) {
+    let check = true;
+    if (form.nome == '') check = false;
+    if (form.idade == '' || idade < 1) check = false;
+    if (form.sexo != 'masc' && form.sexo != 'fem') check = false;
+    if (form.sala == 0) check = false;
+    
+    return check;
+}

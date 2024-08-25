@@ -18,7 +18,7 @@ const aluno = database.define('Aluno', {
     },
     Sexo: {
         type: Sequelize.STRING(20),
-        allowNull: true
+        allowNull: false
     },
     Foto: {
         type: Sequelize.STRING(50),

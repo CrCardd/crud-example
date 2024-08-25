@@ -1,86 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/scripts/script.js"></script>
-    <link rel="stylesheet" href="/css/new_student.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Desafio</title>
-</head>
-<body>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="/scripts/script.js"></script>
+      <link rel="stylesheet" href="/css/new_student.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <title>Desafio</title>
+  </head>
+  <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow justify-content-space-between">
-          <div>
-            <a href="/"><h4 class="navbar-brand">Bosch <Strong class="gradient" >Engineering</Strong> Technical School | Controle de alunos</h4></a>
-          </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-              <div class="navbar-nav" >
-              </div>
-          </div>
+          
+    <header>
+      <div class="d-flex align-items-center p-3 border-bottom shadow">
+          <h5 class="my-0 mr-md-auto font-weight-normal">
+              <span style="color: var(--pallete_6); font-weight: 900;">CONTROLE</span>
+              de Estudantes | 
+          </h5>
+          <nav class=" navbar my-2 my-md-9 mr-md-3">
+              Cadastrar
+              <a class="nav-link" data-toggle="modal" data-target="#register_student" style="cursor: pointer;">Aluno</a>
+              <a class="nav-link" data-toggle="modal" data-target="#register_class" style="cursor: pointer;">Sala</a>
           </nav>
+      </div>
+    </header>
 
 
-
-
-    <div class="container d-flex justify-content-center align-items-center">
-        <div class="row border border-dark rounded mt-5 h-50 w-50 justify-content-center align-items-center">
-            <form class="m-3 w-100" action="/editarAluno/<%= aluno.IDAluno %>" method="post" enctype="multipart/form-data">
-                    <div class="div-image d-flex justify-content-center mb-3">
-                      <img src="/img/<%= aluno.Foto %>"alt="" srcset="" id="new_custom_image" class="rounded-circle border border-dark " style="cursor: pointer; width: 16svh; height: 16svh;">
-                      <input type="file" id="input_image_archive" name="foto"  accept="image/*">
-                    </div>
-      
-      
-                    <div class="form-group col-md-6-shadow w-100">
-                      <label for="formGroupExampleInput">Nome do aluno</label>
-                      <input type="text"  value="<%= aluno.Nome %>" class="form-control" id="formGroupExampleInput" name="nome" placeholder="Insira seu nome aqui">
-                    </div>
-                    <div class="form-group w-100">
-                      <label for="formGroupExampleInput2">Idade</label>
-                      <input type="number" class="form-control" id="formGroupExampleInput2" value="<%= aluno.Idade %>" name="idade" placeholder="Insira sua idade">
-                    </div>
-                    <div class="form-group w-100">
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="sexo" id="new_student_masc" value="masc" <%=aluno.Sexo == "masc" ? 'checked' : '' %>>
-                          <label class="form-check-label" for="new_student_masc">Masculino</label>
+    <main>
+      <div class="container d-flex justify-content-center align-items-center">
+          <div class="row border border-dark rounded mt-5 h-50 w-50 justify-content-center align-items-center">
+              <form class="m-3 w-100" action="/editarAluno/<%= aluno.IDAluno %>" method="post" enctype="multipart/form-data">
+                      <div class="div-image d-flex justify-content-center mb-3">
+                        <img src="/img/<%= aluno.Foto %>"alt="" srcset="" id="new_custom_image" class="rounded-circle border border-dark " style="cursor: pointer; width: 16svh; height: 16svh;">
+                        <input type="file" id="input_image_archive" name="foto"  accept="image/*">
                       </div>
-
-
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="sexo" id="new_student_fem" value="fem" <%=aluno.Sexo == "fem" ? 'checked' : '' %>>
-                          <label class="form-check-label" for="new_student_fem" checked name="sexo">Feminino</label>
+        
+        
+                      <div class="form-group col-md-6-shadow w-100">
+                        <label for="formGroupExampleInput">Nome do aluno</label>
+                        <input type="text"  value="<%= aluno.Nome %>" class="form-control" id="formGroupExampleInput" name="nome" placeholder="Insira seu nome aqui">
                       </div>
-                    </div>
-                    <div class="form-group w-100">
-                      <label for="formGroupExampleInput2">Sala</label>
-                      <select id="sala" name="sala" class="form-control" required>
-                        <% for (let i=0; i<salas.length; i++) { %>
-                        <option value='<%= salas[i].IDSala %>' <%= aluno.IDSala == salas[i].IDSala ? 'selected' : ''%>> <%=
-                        salas[i].Nome %> </option>
-                        <% } %>
-                        </select>
+                      <div class="form-group w-100">
+                        <label for="formGroupExampleInput2">Idade</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2" value="<%= aluno.Idade %>" name="idade" placeholder="Insira sua idade">
+                      </div>
+                      <div class="form-group w-100">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sexo" id="new_student_masc" value="masc" <%=aluno.Sexo == "masc" ? 'checked' : '' %>>
+                            <label class="form-check-label" for="new_student_masc">Masculino</label>
                         </div>
-                    <input class="btn btn-primary" type="submit" value="Atualizar" />
-            </form>
-        </div>
-    </div>
 
 
-    <footer class="d-flex align-items-center fixed-bottom text-light bg-dark shadow">
-        <h5 class="m-3">Bosch <strong class="gradient" >Engineering</strong> Technical School</h5>
-    </footer>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sexo" id="new_student_fem" value="fem" <%=aluno.Sexo == "fem" ? 'checked' : '' %>>
+                            <label class="form-check-label" for="new_student_fem" checked name="sexo">Feminino</label>
+                        </div>
+                      </div>
+                      <div class="form-group w-100">
+                        <label for="formGroupExampleInput2">Sala</label>
+                          <select class="form-control mt-3" name="sala">
+                            <option value="0">Selecione</option>
+                            <% for (let i=0; i<salas.length; i++) { %>
+                              <% if(salas[i].Capacidade > salas[i].qtdAluno) { %>
+                                <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                              <% } %>
+                            <% } %>
+                          </select>
+                          </div>
+                      <input class="btn btn-primary" type="submit" value="Atualizar" />
+              </form>
+          </div>
+      </div>
 
 
 
+    </main>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="/js/script.js"></script>
-</body>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      <script src="/js/script.js"></script>
+  </body>
 </html>

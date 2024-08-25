@@ -15,21 +15,18 @@ module.exports = {
             {
                 raw: true,
                 attributes: ['IDSala', 'Nome']
-                // where : {
-                //     Capacidade: {
-                //         [Op.It]: await aluno.count(
-                //             {
-                //                 where: {
-                //                     IDSala: id
-                //                 }
-                //             }
-                //         )
-                //     }
-                // }
-            }
-
+            },
         );
-        res.render('../views/edit_aluno', { salas, aluno });
+
+        const salas_ = await Promise.all(salas.map(async(sala) => {
+
+                const qtdAluno = await alunos.count({where: {IDSala: sala.IDSala}})
+
+                return{ ...sala, qtdAluno}
+            })
+        )
+
+        res.render('../views/edit_aluno', { salas: salas_, aluno });
     },
 
     async atualizar_aluno(req, res) {
